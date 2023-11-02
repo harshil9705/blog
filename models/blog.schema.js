@@ -12,3 +12,7 @@ const blogschema = new mongoose.Schema({
       username: String,
       date: { type: Date, default: Date.now } }]
 })
+
+const blog = mongoose.model('blog',blogschema)
+
+module.exports = {blog}

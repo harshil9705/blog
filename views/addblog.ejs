@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog</title>
+    <link rel="stylesheet" href="/css/nav.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- header -->
+    <%- include('nav') %>
+    <form action="/blog/create" method="post" id="blogForm" class="mt-[10px]">
+        <center>
+            <input type="text" name="title" class="border p-[5px]"  placeholder="title" id="title" ><br><br>
+
+            <input type="text" name="content" class="border p-[5px]"  placeholder="content" id="content" ><br><br>
+
+            <input type="text" name="image" class="border p-[5px]"  placeholder="image" id="image URL" ><br><br>
+
+            <input type="text" name="category" class="border p-[5px]"  placeholder="category" id="category" ><br><br>
+
+            <input type="submit" value="Upload Blog" class="py-2 px-4 bg-[#272727] text-white font-semibold rounded-lg shadow-md hover:bg-[#272727c4] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+        </center>
+    </form>
+</body>
+</html>
