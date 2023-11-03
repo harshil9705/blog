@@ -19,4 +19,15 @@ const roleauth = (req,res,next)=>{
     }
 }
 
-module.exports = {createauth,roleauth}
+const userauth = (req,res,next)=>{
+    const {id} = req.cookies
+    
+    if(id){
+        next()
+    }
+    else{
+        res.send('login and signup first')
+    }
+}
+
+module.exports = {createauth,roleauth,userauth}

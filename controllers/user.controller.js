@@ -12,12 +12,16 @@ const signup = async(req,res)=>{
     
     try {
         let data = await user.findOne({email : req.body.email})
-        if(data){
-            return res.send(`<h1>your account ${req.body.username} already exist</h1>`)
+        if(!data){ 
+            res.send({username:data.username})
+            // return res.send({username:data.username})
         }
         else{
             const data = await user.create(req.body)
-            return res.cookie('role',data.role).cookie('id',data.id).cookie('auther',data.username).send(`Account created successfully`)
+            
+
+            
+            return res.cookie('role',data.role).cookie('id',data.id).send(`Account created successfully ${data.username}`)
         }
     } catch (error) {
         res.send(error.message)
@@ -28,10 +32,10 @@ const login = async(req,res)=>{
     try {
         let data = await user.findOne({email : req.body.email})
         if(!data){
-            return res.send('Invalid Credentials')
+            return res.send('Invalid Credentials.')
         }
         if(data.password != req.body.password){
-            return res.send('Invalid Credentials')
+            return res.send('Invalid Credentials.')
         }
         else{
             return res.cookie('id',data.id).cookie('role',data.role).cookie('author',data.username).send(`<h1>Welcome User ${data.username}</h1>`)

@@ -14,6 +14,10 @@ app.use(express.static(__dirname + '/public'))
 
 app.use('/user',router)
 app.use('/blog',blog)
+
+app.get('/',(req,res)=>{
+    res.send('Welcome to the movie API')
+})
 app.listen(8090,()=>{
     console.log('http://localhost:8090');
     connection()

@@ -8,10 +8,11 @@ const output = (data)=>{
         let title  = document.createElement("h1")
         title.innerHTML=ele.title
         title.setAttribute("class","title")
-
+        
         let list = document.createElement('div')
         list.setAttribute("class","list")
         list.append(img,title)
+
         document.getElementById("parent-box").append(list)
     })
 }
