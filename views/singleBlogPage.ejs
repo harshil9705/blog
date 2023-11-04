@@ -1,21 +1,30 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/singleblog.css">
 </head>
 <body>
+    <%- include("nav") %>
+
     <div id="blog">
-        <img id="img" src=<%= blog.image %> alt="" >
-        <h3 id="title"><%- blog.title %></h3>
-        <span id="category"><%- blog.category %></span>
-        <p id="content"><%- blog.content %></p>
+        <div>
+            <img id="img" src= <%= blog.image %> alt="">
+        <h3 id="title"><%= blog.title %></h3>
+        <span id="category"><%= blog.category %></span>
+        <p id="content"> <%= blog.content %></p>
         <button id="like">Like</button>
         <span id="count"></span>
         <form action="" id="comment">
-            <input type="text" name="" id="" placeholder="comment">
-        </form>
+            <input type="text" placeholder="Add a comment">
+            <button>submit</button>
+        </form> 
+        </div>
     </div>
 </body>
 </html>
+

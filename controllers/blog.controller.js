@@ -17,14 +17,9 @@ const getblog = async(req,res)=>{
 
 const single = async(req,res)=>{
     const {id} = req.params
-
-    const singleBlog = await blog.findById(id)
+    const singleBlog = await blog.findById(id);
     res.render('singleBlogPage',{blog : singleBlog})
 }
-
-// const getedit = async(req,res)=>{
-//     res.render('patch')
-// }
 
 // post
 
@@ -37,7 +32,6 @@ const post = async(req,res)=>{
         author:req.cookies.author,
         category:category
     }
-    console.log(blog);
     const data = await blog.create(addblog)
     return res.cookie('blogId',data).send(`blog created by ${req.cookies.author}`)
 }
@@ -47,7 +41,6 @@ const dlt = async(req,res)=>{
     const {id} = req.params
     const {role} = req.cookies
     if(role == "admin"){
-        console.log(id);
         await blog.findByIdAndDelete(id)
         return res.status(200).send('deleted')
     }
@@ -56,7 +49,7 @@ const dlt = async(req,res)=>{
     }
 }
 
-
+// patch
 const edit = async(req,res)=>{
     const {id} = req.params
     const {role} = req.cookies
@@ -78,4 +71,4 @@ const like = async(req,res)=>{
 
 
 
-module.exports = {post,getpost,home,getblog,dlt,single,like,edit}
+module.exports = {post,getpost,home,getblog,dlt, edit,single,like}
