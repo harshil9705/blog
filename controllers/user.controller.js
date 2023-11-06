@@ -1,3 +1,4 @@
+
 const { user } = require("../models/user.schema")
 
 const getsignup = (req,res)=>{
@@ -9,17 +10,14 @@ const getlogin = (req,res)=>{
 }
 
 const signup = async(req,res)=>{
-    
+   
     try {
         let data = await user.findOne({email : req.body.email})
         if(!data){ 
-            res.send({username:data.username})
-            // return res.send({username:data.username})
+            return res.cookie('role',data.role).cookie('id',data.id).send({username:data.username})
         }
         else{
             const data = await user.create(req.body)
-            
-
             
             return res.cookie('role',data.role).cookie('id',data.id).send(`Account created successfully ${data.username}`)
         }
@@ -48,3 +46,19 @@ const login = async(req,res)=>{
 }
 
 module.exports = {signup,getsignup,getlogin,login}
+
+
+
+ // try {
+    //     const data = await user.findOne({ email : req.body.email})
+    //     if(data){
+    //         res.send({username : data.username})
+    //     }
+    //     else{
+    //         const data = await user.create(req.body)
+    //         res.cookie("id",data.id).cookie("role",data.role).cookie("author",data.username).send(`Account created successfully ${data.username}`)
+    //     }
+    // } catch (error) {
+        
+    //     //     res.send(error.message)
+    // }

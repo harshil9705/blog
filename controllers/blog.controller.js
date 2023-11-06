@@ -1,3 +1,4 @@
+
 const { blog } = require("../models/blog.schema")
 
 // get
@@ -52,18 +53,11 @@ const dlt = async(req,res)=>{
 // patch
 const edit = async(req,res)=>{
     const {id} = req.params
-    const {role} = req.cookies
 
-    if(role == "admin"){
-     await blog.findByIdAndUpdate(id,req.body)
+    await blog.findByIdAndUpdate( id,req.body)
     const data = await blog.find()
-    return res.send(data)
-    }
-    else{
-        res.send("only admin can access this page")
-    }
-    
-}
+    res.send(data)
+} 
 
 const like = async(req,res)=>{
     res.send('like')
