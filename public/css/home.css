@@ -15,6 +15,7 @@
     grid-gap: 15px;
     margin: 10px;
     text-align: center;
+    font-family: sans-serif;
 }
 
 #parent-box .list{

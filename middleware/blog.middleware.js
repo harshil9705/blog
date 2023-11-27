@@ -26,7 +26,7 @@ const userauth = (req,res,next)=>{
         next()
     }
     else{
-        res.send('login and signup first')
+        res.send('login or signup first')
     }
 }
 

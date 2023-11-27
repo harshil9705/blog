@@ -13,17 +13,17 @@
 
     <div id="blog">
         <div>
-        <img id="img" src= <%= blog.image %> alt="">
-        
-        <h3 id="title"><%= blog.title %></h3>
-        
-        <span id="category"><%= blog.category %></span>
-        
-        <p id="content"> <%= blog.content %></p>
+            <img id="img" src= "<%= singleBlog.image %>" alt="">
+            
+            <h3 id="title"><%= singleBlog.title %></h3>
+            
+            <span id="category"><%= singleBlog.category %></span>
+            
+            <p id="content"> <%= singleBlog.content %></p>
         
         <button id="like">Like</button>
         
-        <span id="count"></span>
+        <span id="count">0</span>
         <form action="" id="comment">
             <input type="text" placeholder="Add a comment">
             <button>submit</button>
@@ -31,5 +31,6 @@
         </div>
     </div>
 </body>
+    <script src="/js/singleblog.js"></script>
 </html>
 
