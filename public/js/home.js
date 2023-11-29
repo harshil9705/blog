@@ -21,10 +21,14 @@ const output = (data)=>{
 }
 
 
-const filters = async(pera)=>{
-    let fit = await fetch(`http://localhost:8090/blog/filter?category=${pera}`)
-    .then((data)=>data.json())
+const filters = (pera)=>{
+    try {
+         fetch(`http://localhost:8090/blog/filter?category=${pera}`)
+        .then((data)=> data.json())
         .then((ele)=>output(ele))
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 document.getElementById("technology").addEventListener("click",()=>filters("technology"))

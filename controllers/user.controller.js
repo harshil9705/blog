@@ -15,10 +15,10 @@ const signup = async(req,res)=>{
         let data = await user.findOne({email : req.body.email})
         if(!data){ 
             const data = await user.create(req.body)
-            return res.cookie('role',data.role).cookie('id',data.id).cookie('author',data.username).send({username:data.username})
+            return res.cookie('role',data.role).cookie('id',data.id).cookie('author',data.username).cookie('username',data.username).send({username:data.username})
         }
         else{
-            return res.cookie('role',data.role).cookie('author',data.username).cookie('id',data.id).send(`Account created successfully ${data.username}`)
+            return res.cookie('role',data.role).cookie('author',data.username).cookie('id',data.id).cookie('username',data.username).send(`Account created successfully ${data.username}`)
         }
     } catch (error) {
         res.send(error.message)
@@ -35,7 +35,7 @@ const login = async(req,res)=>{
             return res.send('Invalid Credentials.')
         }
         else{
-            return res.cookie('id',data.id).cookie('role',data.role).cookie('author',data.username).send(`<h1 style="font-family: sans-serif;">Welcome User ${data.username}</h1>`)
+            return res.cookie('id',data.id).cookie('role',data.role).cookie('author',data.username).cookie('username',data.username).send(`<h1 style="font-family: sans-serif;">Welcome User ${data.username}</h1>`)
         }
     } catch (error) {
         if(error){

@@ -3,8 +3,11 @@ const { signup, getsignup, getlogin, login } = require('../controllers/user.cont
 const router = Router()
 
 router.get('/signup',getsignup)
+
 router.get('/login',getlogin)
+
 router.post('/signup',signup)
+
 router.post('/login',login)
 
 module.exports={router}

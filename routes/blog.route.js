@@ -11,9 +11,9 @@ blog.get('/create',roleauth,getpost)
 
 blog.get('/singleBlog/:id',single)
 
-blog.get("/filter",userauth,filter)
+blog.get("/filter",filter)
 
-blog.get("/search",filter)
+blog.get("/search",search)
 
 blog.post('/create',createauth,post)
 

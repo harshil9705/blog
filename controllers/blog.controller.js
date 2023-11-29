@@ -98,15 +98,15 @@ const edit = async(req,res)=>{
 
 const like = async(req,res)=>{
     try {
-        let role = req.cookies.author
-        let {id} = req.params
+        let {author} = req.cookies
+        let id = req.params.id
 
-        const username = await user.findOne({username:role})
+        const username = await user.findOne({username:author})
         const blogdata = await blog.findById(id)
         
         blogdata.likedBy.push( {username:username.username} )
         await blogdata.save()
-        return res.send(blogdata)
+        return res.send({blog:blogdata})
 
     } catch (error) {
         res.send({error:error})
@@ -117,24 +117,20 @@ const like = async(req,res)=>{
 
 const comment = async(req,res)=>{
     try {
-        let role = req.cookies.author
+        let {author} = req.cookies
         let {id} = req.params
-
-        console.log(req.body.text);
-
-        const name = await user.findOne({username:role})
+        
+        const name = await user.findOne({username:author})
         const blogdata = await blog.findById(id)
         
         let result = {
             text:req.body.text,
             username:name.username
         }
-        console.log(result);
         blogdata.comments.push(result)
         await blogdata.save()
 
-        return res.send(blogdata)
-
+        return res.send({blog:blogdata})
     } catch (error) {
         res.send({error:error})
     }
@@ -147,7 +143,7 @@ const filter = async(req,res)=>{
     try {
         const {category} = req.query
     
-        const data = await blog.find(category)
+        const data = await blog.find({category:category})
         
         return res.send(data)
     } catch (error) {
