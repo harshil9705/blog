@@ -17,7 +17,6 @@ body {
   left: 50%;
   /* -webkit-transform: translate(-50%, -50%); */
   transform: translate(-50%, -50%);
-  background-color: white;
 }
 
 .navMenu a{
@@ -25,7 +24,7 @@ body {
 }
 
 .header{
-  background-color: white;
+  background-color: #EDECE7;
   width: 100%;
   height: 70px;
   border-bottom: 1px solid #ddd;

@@ -9,9 +9,21 @@ const output = (data)=>{
         title.innerHTML=ele.title
         title.setAttribute("class","title")
 
+        let category  = document.createElement("h2")
+        category.innerHTML=`Category : ${ele.category}`
+        category.setAttribute("class","category")
+
+        let content  = document.createElement("h2")
+        content.innerHTML=`Blog : ${ele.content}`
+        content.setAttribute("class","content")
+        
+        let inner = document.createElement("div")
+        // content.setAttribute("class","inner")
+        inner.append(img,content)
+
         let list = document.createElement('div')
         list.setAttribute("class","list")
-        list.append(img,title)
+        list.append(title,category,inner)
         list.addEventListener("click",()=>{
             window.location.href=`/blog/singleBlog/${ele._id}`
         })
