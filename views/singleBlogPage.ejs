@@ -14,8 +14,11 @@
     <div class="container">
       <div id="blog">
         <div>
-          <img id="img" src="<%= singleBlog.image %>" alt="" />
 
+          <span class="outer">
+            <img id="img" src="<%= singleBlog.image %>" alt="" />
+          </span>
+          
           <h3 id="title"><%= singleBlog.title %></h3>
 
           <span id="category"><%= singleBlog.category %></span>
@@ -27,7 +30,7 @@
             <button id="like">Like</button>
             <span id="count" style="font-size: 20px; margin-left: 5px;">0</span>
             <form action="/blog" id="comment">
-              <input type="text" id="text" placeholder="Add a comment" />
+              <input type="text" id="text" placeholder="Add a comment" style="border: #E5E7EB solid 1px;" />
               <button id="submit">submit</button>
             </form>
           </div>

@@ -89,3 +89,29 @@ body {
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
+
+#sub{
+  display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    text-align: center;
+    border: 0;
+    min-height: 36px;
+    background-color: #A5394E;
+    min-width: 36px;
+    color: #ffffff;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px, rgba(0, 0, 0, 0.2) 0px -1px 0px 0px inset;
+    transition: all 0.3s;
+    padding: 7px 16px;
+}
+
+#sub:hover{
+  background: #A5647F;
+}
+
+input:focus{
+  outline: #A5394E 1px solid;
+}

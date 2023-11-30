@@ -48,7 +48,7 @@ const post = async(req,res)=>{
         }
         const data = await blog.create(addblog)
 
-        return res.cookie('blogId',data).send(`blog created by ${req.cookies.author}`)
+        return res.cookie('blogId',data.id).send(`blog created by ${req.cookies.author}`)
     } catch (error) {
         return res.send({error:error})
     }
@@ -99,11 +99,13 @@ const edit = async(req,res)=>{
 const like = async(req,res)=>{
     try {
         let {author} = req.cookies
-        let id = req.params.id
+        let {id} = req.params
+        // console.log(id + "blogid");
 
         const username = await user.findOne({username:author})
         const blogdata = await blog.findById(id)
-        
+
+        // console.log(blogdata + "blogdata");
         blogdata.likedBy.push( {username:username.username} )
         await blogdata.save()
         return res.send({blog:blogdata})
@@ -120,9 +122,11 @@ const comment = async(req,res)=>{
         let {author} = req.cookies
         let {id} = req.params
         
+        // console.log(id +" comment");
         const name = await user.findOne({username:author})
         const blogdata = await blog.findById(id)
         
+        // console.log(blogdata +" comment");
         let result = {
             text:req.body.text,
             username:name.username

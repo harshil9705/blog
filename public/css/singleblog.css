@@ -24,16 +24,23 @@
 #blog div{
     border-radius: 10px;
     background-color: #EDECE7;
-    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     padding: 30px;
 }
 
 #img{
-    /* border-top-left-radius: 10px; */
-    margin-bottom: 30px;
+    padding: 5px;
+    background: #fff;
     width: 100%;
     height: 100%;
-    border-bottom: #545454 1px solid;
+}
+
+.outer{
+    display: block;
+    margin-bottom: 20px;
+    width: auto;
+    padding: 8px 8px 5px 8px;
+    overflow: hidden;
+    background: #222;
 }
 
 #title{
