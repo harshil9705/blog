@@ -26,7 +26,7 @@ const single = async(req,res)=>{
         const {id} = req.params
 
         const singleBlog = await blog.findById(id);
-
+        console.log(singleBlog);
         res.render('singleBlogPage',{singleBlog})
     } catch (error) {
         return res.send({error:error})
@@ -98,17 +98,17 @@ const edit = async(req,res)=>{
 
 const like = async(req,res)=>{
     try {
-        let {author} = req.cookies
-        let {id} = req.params
+        let {id} = req.cookies
+        let blogid = req.params.id
         // console.log(id + "blogid");
 
-        const username = await user.findOne({username:author})
-        const blogdata = await blog.findById(id)
+        const username = await user.findById(id)
+        const blogdata = await blog.findById(blogid)
 
         // console.log(blogdata + "blogdata");
         blogdata.likedBy.push( {username:username.username} )
         await blogdata.save()
-        return res.send({blog:blogdata})
+        return res.send(blogdata)
 
     } catch (error) {
         res.send({error:error})
@@ -119,12 +119,12 @@ const like = async(req,res)=>{
 
 const comment = async(req,res)=>{
     try {
-        let {author} = req.cookies
-        let {id} = req.params
+        let {id} = req.cookies
+        let blogid = req.params.id
         
         // console.log(id +" comment");
-        const name = await user.findOne({username:author})
-        const blogdata = await blog.findById(id)
+        const name = await user.findById(id)
+        const blogdata = await blog.findById(blogid)
         
         // console.log(blogdata +" comment");
         let result = {
@@ -134,7 +134,7 @@ const comment = async(req,res)=>{
         blogdata.comments.push(result)
         await blogdata.save()
 
-        return res.send({blog:blogdata})
+        return res.send(blogdata)
     } catch (error) {
         res.send({error:error})
     }
@@ -159,7 +159,7 @@ const filter = async(req,res)=>{
 
 const search = async(req,res)=>{
     try {
-        const {blogg} = req.query
+        const query = req.query.blogs;
         const blogs = await blog.find()
 
         const options = {
@@ -167,15 +167,10 @@ const search = async(req,res)=>{
         }
 
         const fuse = new Fuse(blogs,options);
-        const result = fuse.search(blogg)
-
+        const result = fuse.search(query)
+        console.log(result);
+        return res.send(result)
         
-        if(result){
-            return res.send(result)
-        }
-        else{
-            return res.send({error:error})
-        }
     } catch (error) {
         return res.send({error:error})
     }
